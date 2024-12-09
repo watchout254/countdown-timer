@@ -133,6 +133,36 @@
             animation-delay: 4s;
         }
 
+        /* Running Banner */
+        .banner {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: #FFE4E1;
+            color: #002f4b;
+            font-size: 1rem;
+            font-weight: bold;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        .banner-content {
+            display: inline-block;
+            padding-left: 100%;
+            animation: scroll-banner 10s linear infinite;
+        }
+
+        @keyframes scroll-banner {
+            from {
+                transform: translateX(0%);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .coming-soon h2 {
@@ -174,6 +204,11 @@
     </style>
 </head>
 <body>
+    <div class="banner">
+        <div class="banner-content">
+            🎉 Welcome to the New Year Countdown! 🕒 Stay tuned for the celebrations! Tuchekiane Next year mazee🎊
+        </div>
+    </div>
     <section class="coming-soon">
         <div>
             <h2>New Year Countdown</h2>
@@ -202,6 +237,9 @@
         <img class="waiting" src="https://img.freepik.com/free-photo/anime-characters-town-christmas-season_23-2150970243.jpg" alt="background image">
     </section>
 
+    <!-- Running Banner -->
+    
+
     <!-- Snowflakes -->
     <div class="snowflake">❄</div>
     <div class="snowflake">❅</div>
@@ -212,7 +250,6 @@
     <div class="snowflake">❄</div>
     <div class="snowflake">❄</div>
     <div class="snowflake">❄</div>
-    
 
     <script>
         // Countdown logic
