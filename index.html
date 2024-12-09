@@ -1,40 +1,239 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
-    <title>COUNT DOWN - New Year</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Countdown - New Year</title>
+    <style>
+        /* General reset */
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #002f4b, #dc4225);
+            color: #fff;
+        }
+
+        /* Countdown Section */
+        .coming-soon {
+            text-align: center;
+            padding: 50px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .coming-soon h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            color: #ffd700;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        /* Individual Containers */
+        .countdown div {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            width: 100px;
+            text-align: center;
+        }
+
+        .countdown h3 {
+            margin: 10px 0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Background Image */
+        .waiting {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        /* Footer */
+        p {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 0.9rem;
+        }
+
+        /* Decorative Elements */
+        body::before,
+        body::after {
+            content: '';
+            position: absolute;
+            top: -50px;
+            width: 100%;
+            height: 100px;
+            background-image: url('https://freepngimg.com/thumb/christmas_lights/6-2-christmas-lights-png-hd.png');
+            background-repeat: repeat-x;
+            background-size: contain;
+            animation: flicker 2s infinite;
+        }
+
+        body::before {
+            top: 0;
+            left: 0;
+            z-index: 2;
+        }
+
+        /* Snowfall effect */
+        @keyframes snow {
+            0% {
+                transform: translateY(-50px);
+            }
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -50px;
+            font-size: 1.2rem;
+            color: #fff;
+            animation: snow 10s linear infinite;
+            opacity: 0.8;
+        }
+
+        /* Snowflake random positioning */
+        .snowflake:nth-child(1) {
+            left: 10%;
+            animation-delay: 0s;
+        }
+        .snowflake:nth-child(2) {
+            left: 20%;
+            animation-delay: 1s;
+        }
+        .snowflake:nth-child(3) {
+            left: 40%;
+            animation-delay: 2s;
+        }
+        .snowflake:nth-child(4) {
+            left: 60%;
+            animation-delay: 3s;
+        }
+        .snowflake:nth-child(5) {
+            left: 80%;
+            animation-delay: 4s;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .coming-soon h2 {
+                font-size: 2rem;
+            }
+
+            .countdown div {
+                width: 80px;
+                padding: 15px;
+            }
+
+            .countdown h3 {
+                font-size: 0.9rem;
+            }
+
+            .waiting {
+                max-height: 300px;
+            }
+
+            p {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .countdown div {
+                width: 70px;
+                padding: 10px;
+            }
+
+            .coming-soon h2 {
+                font-size: 1.8rem;
+            }
+
+            .countdown h3 {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
-   
     <section class="coming-soon">
-    <div>
-        <h2>New Year Countdown</h2>
-        <div class="countdown">
-            <div class="container-day">
-                <h3 class="day">Day</h3>
-                <h3>Days</h3>
-            </div>
+        <div>
+            <h2>New Year Countdown</h2>
+            <div class="countdown">
+                <div class="container-day">
+                    <h3 class="day">0</h3>
+                    <h3>Days</h3>
+                </div>
 
-            <div class="container-hour">
-                <h3 class="hour">Hour</h3>
-                <h3>Hour</h3>
-            </div>
+                <div class="container-hour">
+                    <h3 class="hour">0</h3>
+                    <h3>Hours</h3>
+                </div>
 
-            <div class="container-minutes">
-                <h3 class="minute">Minutes</h3>
-                <h3>Minutes</h3>
-            </div>
+                <div class="container-minutes">
+                    <h3 class="minute">0</h3>
+                    <h3>Minutes</h3>
+                </div>
 
-            <div class="container-seconds">
-                <h3 class="second">Seconds</h3>
-                <h3>Seconds</h3>
+                <div class="container-seconds">
+                    <h3 class="second">0</h3>
+                    <h3>Seconds</h3>
+                </div>
             </div>
         </div>
-        </div>
-        <img class="waiting"  src="copyright-free-images-750x420.jpg" alt="background image">
+        <img class="waiting" src="https://img.freepik.com/free-photo/anime-characters-town-christmas-season_23-2150970243.jpg" alt="background image">
     </section>
-    <script src="index.js"></script>
+
+    <!-- Snowflakes -->
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❄</div>
+
+    <script>
+        // Countdown logic
+        const countdown = () => {
+            const countDate = new Date("January 01, 2025 00:00:00").getTime();
+            const now = new Date().getTime();
+            const gap = countDate - now;
+
+            const second = 1000;
+            const minute = second * 60;
+            const hour = minute * 60;
+            const day = hour * 24;
+
+            const textDay = Math.floor(gap / day);
+            const textHour = Math.floor((gap % day) / hour);
+            const textMinute = Math.floor((gap % hour) / minute);
+            const textSecond = Math.floor((gap % minute) / second);
+
+            document.querySelector(".day").innerText = textDay;
+            document.querySelector(".hour").innerText = textHour;
+            document.querySelector(".minute").innerText = textMinute;
+            document.querySelector(".second").innerText = textSecond;
+        };
+
+        setInterval(countdown, 1000);
+    </script>
+    <p>All Rights Reserved &copy;2024, Daniel Mukenya &trade; </p>
 </body>
 </html>
